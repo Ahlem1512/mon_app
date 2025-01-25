@@ -9,6 +9,11 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class FirstController extends AbstractController
 {
+    #[Route('/template', name: 'template')]
+    public function template(){
+        return $this->render('template.html.twig');
+    }
+
     #[Route('/order/{maVar}', name: 'test.order.route')]
     public function TestOrderRoute($maVar){
         return new Response("
@@ -26,7 +31,8 @@ final class FirstController extends AbstractController
         ]);
     }
 
-    #[Route('/sayHello/{name}/{firstname}', name: 'say.hello')]
+
+   // #[Route('/sayHello/{name}/{firstname}', name: 'say.hello')]
     public function sayHello(Request $request,$name,$firstname): Response
     {
        return $this->render('first/hello.html.twig',[
